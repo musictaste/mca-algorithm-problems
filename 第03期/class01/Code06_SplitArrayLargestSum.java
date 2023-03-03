@@ -10,7 +10,7 @@ public class Code06_SplitArrayLargestSum {
 			sum += nums[i];
 		}
 		long l = 0;
-		long r = sum;
+		long r = sum; // 累加和
 		long ans = 0;
 		while (l <= r) {
 			long mid = (l + r) / 2;

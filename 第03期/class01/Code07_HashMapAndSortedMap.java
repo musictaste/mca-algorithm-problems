@@ -64,7 +64,7 @@ public class Code07_HashMapAndSortedMap {
 
 		Cat[] cats = { cat1, cat2, cat3, cat4 };
 
-		// 根据年龄排序
+		// 根据年龄排序，由大到小
 		Arrays.sort(cats, (a, b) -> b.age - a.age);
 		for (Cat cat : cats) {
 			System.out.println(cat.age + " , " + cat.weight);
@@ -85,7 +85,8 @@ public class Code07_HashMapAndSortedMap {
 		for(Integer x : arr) {
 			System.out.println(x);
 		}
-		
+
+		// int类型，没有comparator方法
 		int[] arr2 = { 3, 4, 7, 2 };
 		Arrays.sort(arr2);
 		for(int x : arr2) {

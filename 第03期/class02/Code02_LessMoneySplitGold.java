@@ -2,6 +2,7 @@ package class02;
 
 import java.util.PriorityQueue;
 
+// 哈夫曼树 -> 分金条问题
 public class Code02_LessMoneySplitGold {
 
 	public static int lessMoney(int[] arr) {

@@ -3,6 +3,7 @@ package class02;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
+// 面试原题：857.雇佣K名工人的最低成本
 // 有 n 名工人。 给定两个数组 quality 和 wage ，
 // 其中，quality[i] 表示第 i 名工人的工作质量，其最低期望工资为 wage[i] 。
 // 现在我们想雇佣 k 名工人组成一个工资组。在雇佣 一组 k 名工人时，

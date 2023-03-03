@@ -12,7 +12,7 @@ public class Code05_KokoEatingBananas {
 			R = Math.max(R, pile);
 		}
 		// 1......Max
-		int ans = 0;
+		int ans = 0; // 这个题一定有答案，如果没有答案，ans初始值为-1
 		int M = 0;
 		while (L <= R) {
 			M = L + ((R - L) >> 1);
@@ -33,7 +33,7 @@ public class Code05_KokoEatingBananas {
 		long ans = 0;
 		int offset = speed - 1;
 		for (int pile : piles) {
-			ans += (pile + offset) / speed;
+			ans += (pile + offset) / speed; // 向上取整
 		}
 		return ans;
 	}

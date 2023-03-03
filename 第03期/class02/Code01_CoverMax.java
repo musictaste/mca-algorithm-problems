@@ -3,6 +3,7 @@ package class02;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
+// 高频题：最大线段重合问题
 public class Code01_CoverMax {
 
 	public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class Code01_CoverMax {
 		heap.add(3);
 		heap.add(9);
 		heap.add(4);
-		heap.add(4);
+		heap.add(4); // 重复会保留
 		while (!heap.isEmpty()) {
 			System.out.println(heap.poll());
 		}
