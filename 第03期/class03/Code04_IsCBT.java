@@ -32,8 +32,8 @@ public class Code04_IsCBT {
 		boolean mustLeafStage = false;
 		while (!queue.isEmpty()) {
 			TreeNode cur = queue.poll();
-			if ((cur.left == null && cur.right != null) 
-					|| (mustLeafStage && (cur.left != null || cur.right != null))) {
+			if ((cur.left == null && cur.right != null)  // 原则1
+					|| (mustLeafStage && (cur.left != null || cur.right != null))) { // 原则2
 				return false;
 			}
 			if(cur.left == null || cur.right == null) {

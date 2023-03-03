@@ -2,6 +2,7 @@ package class03;
 
 import java.util.PriorityQueue;
 
+// 合并有序链表
 // 给你一个链表数组，每个链表都已经按升序排列。
 // 请你将所有链表合并到一个升序链表中，返回合并后的链表。
 // 测试链接：https://leetcode.cn/problems/merge-k-sorted-lists/
@@ -50,7 +51,7 @@ public class Code01_MergeKSortedLists {
 		PriorityQueue<ListNode> heap = new PriorityQueue<>((a, b) -> a.val - b.val);
 		// 所有链表的头节点，进入小根堆
 		for (int i = 0; i < lists.length; i++) {
-			if (lists[i] != null) {
+			if (lists[i] != null) { // 头结点为null排除
 				heap.add(lists[i]);
 			}
 		}

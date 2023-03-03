@@ -34,7 +34,7 @@ public class Code06_IsBalanced {
 
 	public static Info process(TreeNode root) {
 		if (root == null) {
-			return new Info(true, 0);
+			return new Info(true, 0); // 空树，是一颗平衡二叉树，并且高度为0
 		}
 		Info leftInfo = process(root.left);
 		Info rightInfo = process(root.right);
