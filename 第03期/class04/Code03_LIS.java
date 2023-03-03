@@ -1,5 +1,6 @@
 package class04;
 
+// 高频：最长递增子序列算法
 // 本题测试链接 : https://leetcode.cn/problems/longest-increasing-subsequence
 public class Code03_LIS {
 

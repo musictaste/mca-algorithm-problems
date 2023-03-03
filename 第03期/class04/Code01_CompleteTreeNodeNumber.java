@@ -33,10 +33,13 @@ public class Code01_CompleteTreeNodeNumber {
 		if (Level == h) {
 			return 1;
 		}
-		if (mostLeftLevel(node.right, Level + 1) == h) {
+		if (mostLeftLevel(node.right, Level + 1) == h) { // 左树为满二叉树
 			// (1 << (h - Level)) 就代表 : 2的(h-level)次方
+			// (2^(h-level) -1)(左树的高度) + 1（当前节点） + 右树的节点数
 			return (1 << (h - Level)) + bs(node.right, Level + 1, h);
 		} else {
+			// 右树为满二叉树
+			// 右树的节点数 + 当前节点 + 左树的节点数
 			return (1 << (h - Level - 1)) + bs(node.left, Level + 1, h);
 		}
 	}
