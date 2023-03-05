@@ -13,6 +13,7 @@ import java.util.Arrays;
 public class Code04_EnvelopesProblem {
 
 	public static int maxEnvelopes(int[][] envelopes) {
+		// 长度从小到大排序；如果长度相等，高度从大到小排序
 		Arrays.sort(envelopes, (a, b) -> a[0] != b[0] ? (a[0] - b[0]) : (b[1] - a[1]));
 		int n = envelopes.length;
 		int[] ends = new int[n];

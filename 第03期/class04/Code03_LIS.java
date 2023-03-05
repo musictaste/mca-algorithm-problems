@@ -4,6 +4,7 @@ package class04;
 // 本题测试链接 : https://leetcode.cn/problems/longest-increasing-subsequence
 public class Code03_LIS {
 
+	// 时间复杂度：O(N^2)，因为操作过程是等差数列
 	public static int common(int[] arr) {
 		int n = arr.length;
 		int[] dp = new int[n];
@@ -23,6 +24,8 @@ public class Code03_LIS {
 		return maxLen;
 	}
 
+	// 优化方案
+	// 时间复杂度：O(N*logN)
 	public static int lengthOfLIS(int[] arr) {
 		if (arr == null || arr.length == 0) {
 			return 0;
@@ -38,6 +41,7 @@ public class Code03_LIS {
 		for (int i = 1; i < arr.length; i++) {
 			int l = 0;
 			int r = right;
+			// 二分，知道ends数组中大于当前数字的ends数组中最左的位置
 			while (l <= r) {
 				int m = (l + r) / 2;
 				if (arr[i] > ends[m]) {
@@ -47,8 +51,10 @@ public class Code03_LIS {
 				}
 			}
 			// l : 就是返回的下标
+			// 下面两句，要么改写了ends数组某个位置的值，要么在ends数组中新增一个数字
 			ends[l] = arr[i];
 			right = Math.max(right, l);
+			// 省掉了dp数组
 			max = Math.max(max, l + 1);
 		}
 		return max;
