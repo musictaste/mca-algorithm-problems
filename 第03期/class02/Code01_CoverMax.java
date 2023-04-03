@@ -21,9 +21,10 @@ public class Code01_CoverMax {
 		}
 	}
 
+	// 高频题：最大线段重合问题
 	public static int maxCover(int[][] m) {
 		// m = [ [4, 7], [3, 6], [1, 5] , [2, 9] ]
-		// 开始位置排序！
+		// 根据开始位置排序！
 		// m = [ [1, 5], [2, 9], [3, 6] , [4, 7] ]
 		Arrays.sort(m, (a, b) -> (a[0] - b[0]));
 		// 小根堆！建立！

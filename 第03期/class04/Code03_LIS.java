@@ -13,6 +13,7 @@ public class Code03_LIS {
 		int maxLen = 1;
 		for (int i = 1; i < n; i++) {
 			int preLen = 0;
+			// i位置之前所有的位置都遍历，得到之前情况的最长长度
 			for (int j = 0; j < i; j++) {
 				if (arr[j] < arr[i]) {
 					preLen = Math.max(preLen, dp[j]);
@@ -32,6 +33,7 @@ public class Code03_LIS {
 		}
 		int[] ends = new int[arr.length];
 		// ends[i] : 所有长度为i+1的递增子序列，最小结尾！
+		// ends是从0开始的，跟思路流程中做个转化
 		// 0.....n-1
 		// 0 1...
 		ends[0] = arr[0];
@@ -58,6 +60,8 @@ public class Code03_LIS {
 			max = Math.max(max, l + 1);
 		}
 		return max;
+		// 代码能不能变成right+1 ?
+//		return right+1;
 	}
 
 }

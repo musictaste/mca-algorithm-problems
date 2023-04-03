@@ -24,7 +24,9 @@ public class Code02_DiameterOfBinaryTree {
 	}
 
 	public static class Info {
+		// 最大距离
 		public int maxDistance;
+		// 树高
 		public int height;
 
 		public Info(int m, int h) {
@@ -40,6 +42,7 @@ public class Code02_DiameterOfBinaryTree {
 		}
 		Info leftInfo = process(x.left);
 		Info rightInfo = process(x.right);
+		// 当前树的高度
 		int height = Math.max(leftInfo.height, rightInfo.height) + 1;
 		// 可能性1&2 : 左树上的最大距离 右树上的最大距离 取最大值
 		int maxDistance = Math.max(leftInfo.maxDistance, rightInfo.maxDistance);

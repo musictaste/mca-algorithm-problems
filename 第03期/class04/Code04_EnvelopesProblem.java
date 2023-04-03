@@ -33,8 +33,8 @@ public class Code04_EnvelopesProblem {
 					r = m - 1;
 				}
 			}
-			right = Math.max(right, l);
 			ends[l] = envelopes[i][1];
+			right = Math.max(right, l);
 		}
 		return right + 1;
 	}

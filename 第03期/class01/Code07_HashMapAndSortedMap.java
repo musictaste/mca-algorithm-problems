@@ -18,6 +18,8 @@ public class Code07_HashMapAndSortedMap {
 	}
 
 	public static void main(String[] args) {
+
+		// 哈希表
 		Student s1 = new Student(4);
 		Student s2 = new Student(4);
 		Student s3 = new Student(4);
@@ -39,6 +41,7 @@ public class Code07_HashMapAndSortedMap {
 
 		// O(1) 常数时间
 
+		// 有序表
 		TreeMap<Integer, String> treeMap = new TreeMap<>();
 		treeMap.put(-5, "我是5");
 		treeMap.put(15, "我是5");
@@ -56,6 +59,9 @@ public class Code07_HashMapAndSortedMap {
 		System.out.println(treeMap.floorKey(num));
 		// >= num 且离num最近的key
 		System.out.println(treeMap.ceilingKey(num));
+
+
+		// 比较器
 		System.out.println("==========");
 		Cat cat1 = new Cat(4, 40);
 		Cat cat2 = new Cat(3, 400);
@@ -70,6 +76,7 @@ public class Code07_HashMapAndSortedMap {
 			System.out.println(cat.age + " , " + cat.weight);
 		}
 
+		// 比较器用于有序结构
 		TreeSet<Cat> catSet = new TreeSet<>((a, b) -> b.age - a.age);
 		catSet.add(cat1);
 		catSet.add(cat2);
@@ -79,7 +86,6 @@ public class Code07_HashMapAndSortedMap {
 		System.out.println(catSet.first().age);
 
 		// 根据重量排序
-
 		Integer[] arr = { 3, 4, 7, 2 };
 		Arrays.sort(arr, (a,b) -> b - a);
 		for(Integer x : arr) {

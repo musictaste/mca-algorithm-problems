@@ -2,6 +2,7 @@ package class01;
 
 import java.util.HashMap;
 
+// 步骤和
 public class Code04_IsStepSum {
 
 	public static boolean isStepSum(int stepSum) {
