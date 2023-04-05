@@ -17,7 +17,7 @@ public class Code05_MaximumFrequencyStack {
 		// 出现的最大次数
 		private int topTimes;
 		// 每层节点
-		// HashMap -> ArrayList
+		// HashMap -> 可以替换为 ArrayList，ArrayList更快一些
 		private HashMap<Integer, ArrayList<Integer>>
 		cntValues = new HashMap<>();
 		
@@ -30,11 +30,14 @@ public class Code05_MaximumFrequencyStack {
 			valueTopTime.put(val, valueTopTime.getOrDefault(val, 0) + 1);
 			// 当前数是什么词频
 			int curTopTimes = valueTopTime.get(val);
+			// 没有当前层，建起这一层
 			if (!cntValues.containsKey(curTopTimes)) {
 				cntValues.put(curTopTimes, new ArrayList<>());
 			}
+			// 建完后的层，将当前词频加入到列表中去
 			ArrayList<Integer> curTimeValues = cntValues.get(curTopTimes);
 			curTimeValues.add(val);
+			// 更新最大次数
 			topTimes = Math.max(topTimes, curTopTimes);
 		}
 

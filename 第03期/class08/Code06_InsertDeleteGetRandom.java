@@ -42,6 +42,7 @@ public class Code06_InsertDeleteGetRandom {
 
 		public boolean remove(int val) {
 			// 拿最后的位置，填上当前要删掉数字的，洞！
+			// 如果要删除的是最后一个元素，代码也对
 			if (keyIndexMap.containsKey(val)) {
 				// 删掉 30   7
 				// size-1位置的数字，填洞

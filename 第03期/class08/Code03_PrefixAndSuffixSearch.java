@@ -40,6 +40,7 @@ public class Code03_PrefixAndSuffixSearch {
 				// 所有字符串，i
 				String word = words[i];
 				TrieNode cur = preHead;
+				// 从左到右遍历字符串，生成前缀树
 				for (int j = 0; j < word.length(); j++) {
 					int path = word.charAt(j) - 'a';
 					if (cur.nexts[path] == null) {
@@ -49,6 +50,7 @@ public class Code03_PrefixAndSuffixSearch {
 					cur.indies.add(i);
 				}
 				cur = sufHead;
+				// 从右到左遍历生成后缀树
 				for (int j = word.length() - 1; j >= 0; j--) {
 					int path = word.charAt(j) - 'a';
 					if (cur.nexts[path] == null) {
@@ -63,6 +65,7 @@ public class Code03_PrefixAndSuffixSearch {
 		// 给前缀 pref
 		// 给后缀 suff
 		public int f(String pref, String suff) {
+			// 根据给定的前缀pref，查找前缀树得到下标集合
 			ArrayList<Integer> preList = null;
 			TrieNode cur = preHead;
 			for (int i = 0; i < pref.length() && cur != null; i++) {
@@ -74,6 +77,8 @@ public class Code03_PrefixAndSuffixSearch {
 			if (cur != null) {
 				preList = cur.indies;
 			}
+
+			// 根据给定的后缀suff，查找后缀树得到下标集合
 			ArrayList<Integer> sufList = null;
 			cur = sufHead;
 			for (int i = suff.length() - 1; i >= 0 && cur != null; i--) {
@@ -85,6 +90,9 @@ public class Code03_PrefixAndSuffixSearch {
 			if (cur != null) {
 				sufList = cur.indies;
 			}
+
+			// 下标集合，遍历短的集合，在长的集合中二分查找
+			// 也可以使用哈希表，或者首尾指针
 			ArrayList<Integer> small = preList.size() <= sufList.size() ? preList : sufList;
 			ArrayList<Integer> big = small == preList ? sufList : preList;
 			for (int i = small.size() - 1; i >= 0; i--) {

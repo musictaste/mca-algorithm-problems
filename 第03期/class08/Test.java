@@ -40,6 +40,7 @@ public class Test {
 
 		// 在该结构里，删掉str，一次
 		public void erase(String str) {
+			// 当前字符串出现过，才能删除
 			if (countWordsEqualTo(str) != 0) {
 				Node cur = root;
 				cur.pass--;
