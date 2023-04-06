@@ -8,6 +8,7 @@ package class09;
 // 测试链接 : https://leetcode.cn/problems/minimum-window-substring/
 public class Code03_MinWindowLength {
 
+	// 欠债表法
 	public static String minWindow(String s, String t) {
 		if (s.length() < t.length()) {
 			return "";

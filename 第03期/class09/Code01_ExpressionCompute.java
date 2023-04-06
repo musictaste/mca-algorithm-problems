@@ -24,6 +24,7 @@ public class Code01_ExpressionCompute {
 		int[] bra = null;
 		// 从i出发，开始撸串
 		while (i < str.length && str[i] != ')') {
+			// 得到数字，例如36
 			if (str[i] >= '0' && str[i] <= '9') {
 				cur = cur * 10 + str[i++] - '0';
 			} else if (str[i] != '(') { // 遇到的是运算符号
@@ -35,6 +36,8 @@ public class Code01_ExpressionCompute {
 				i = bra[1] + 1;
 			}
 		}
+		// 例如： 70+(2*3-2)-5
+		// 这里是将最后的数字5放入队列中，并默认补了一个操作符+，这个操作符最后并不处理
 		addNum(queue, cur, '+');
 		return new int[] { getAns(queue), i };
 	}
@@ -51,6 +54,7 @@ public class Code01_ExpressionCompute {
 
 	public static int getAns(LinkedList<String> queue) {
 		int ans = Integer.valueOf(queue.pollFirst());
+		// size >1,最后一个操作符不处理，最后一个操作符默认为+
 		while (queue.size() > 1) {
 			String op = queue.pollFirst();
 			int num = Integer.valueOf(queue.pollFirst());
