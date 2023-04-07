@@ -18,6 +18,7 @@ public class Code01_BoatsToSavePeople {
 		int r = people.length - 1;
 		int sum = 0;
 		while (l <= r) {
+			// l==r,只有一个人
 			sum = l == r ? people[l] : people[l] + people[r];
 			if (sum > limit) {
 				r--;
@@ -25,6 +26,7 @@ public class Code01_BoatsToSavePeople {
 				l++;
 				r--;
 			}
+			// 增加一条船
 			ans++;
 		}
 		return ans;

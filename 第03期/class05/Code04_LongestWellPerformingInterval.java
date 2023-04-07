@@ -20,6 +20,7 @@ public class Code04_LongestWellPerformingInterval {
 		int ans = 0;
 		int sum = 0;
 		for (int i = 0; i < hours.length; i++) {
+			// 转化，大于8的记为1，小于8的记为-1
 			sum += hours[i] > 8 ? 1 : -1;
 			if (sum > 0) {
 				// 0...i i+1

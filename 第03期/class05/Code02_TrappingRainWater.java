@@ -11,16 +11,21 @@ public class Code02_TrappingRainWater {
 		if (n < 3) {
 			return 0;
 		}
+		// 左侧最大值
 		int[] leftMax = new int[n];
 		leftMax[0] = arr[0];
 		for (int i = 1; i < n; i++) {
 			leftMax[i] = Math.max(leftMax[i - 1], arr[i]);
 		}
+
+		// 右侧最大值
 		int[] rightMax = new int[n];
 		rightMax[n - 1] = arr[n - 1];
 		for (int i = n - 2; i >= 0; i--) {
 			rightMax[i] = Math.max(rightMax[i + 1], arr[i]);
 		}
+
+		// 求水量
 		int ans = 0;
 		for (int i = 1; i < n - 1; i++) {
 			ans += Math.max(Math.min(leftMax[i - 1], rightMax[i + 1]) - arr[i], 0);
@@ -28,7 +33,7 @@ public class Code02_TrappingRainWater {
 		return ans;
 	}
 
-	// 首尾双指针
+	// 最优解：首尾双指针
 	public static int trap(int[] arr) {
 		if (arr == null || arr.length < 2) {
 			return 0;
@@ -40,10 +45,13 @@ public class Code02_TrappingRainWater {
 		int rightMax = arr[N - 1];
 		int water = 0;
 		while (L <= R) {
+			// 小于等于，先结算左侧
 			if (leftMax <= rightMax) {
+				// 结算左侧
 				water += Math.max(0, leftMax - arr[L]);
 				leftMax = Math.max(leftMax, arr[L++]);
 			} else {
+				// 结算右侧
 				water += Math.max(0, rightMax - arr[R]);
 				rightMax = Math.max(rightMax, arr[R--]);
 			}

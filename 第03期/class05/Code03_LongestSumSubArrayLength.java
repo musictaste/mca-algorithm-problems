@@ -11,9 +11,9 @@ public class Code03_LongestSumSubArrayLength {
 		if (arr == null || arr.length == 0) {
 			return 0;
 		}
-		// key : 某个前缀和 value : 最早位置
+		// key : 某个前缀和 value : 前缀和出现的最早位置
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-		// 非常重要 !
+		// 非常重要 ! 防止少算一些可能性
 		map.put(0, -1);
 		int ans = 0;
 		int sum = 0;
@@ -30,16 +30,20 @@ public class Code03_LongestSumSubArrayLength {
 			if (!map.containsKey(sum)) {
 				map.put(sum, i);
 			}
+			// 如果出现，不要更新最早出现的位置下标
 		}
 		return ans;
 	}
 
+	// 不提前塞一条数据的解法
 	public int maxSubArrayLen2(int[] arr, int k) {
 		if (arr == null || arr.length == 0) {
 			return 0;
 		}
 		// key : 某个前缀和 value : 最早位置
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		// 非常重要 ! 防止少算一些可能性；不提前塞一条数据的解法
+//		map.put(0, -1);
 		int ans = 0;
 		int sum = 0;
 		for (int i = 0; i < arr.length; i++) {
