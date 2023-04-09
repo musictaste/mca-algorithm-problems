@@ -20,10 +20,20 @@ public class Test {
 		for (int i = 0; i <= n; i++) {
 			graph.add(new ArrayList<>());
 		}
+		// 无权重的邻接表法
 		for (int[] e : edges) {
 			int from = e[0];
 			int to = e[1];
 			graph.get(from).add(to);
+		}
+
+		// 有权重的邻接表法
+		ArrayList<ArrayList<int[]>> graph1 = new ArrayList<>();
+		for(int[] e: edges){
+			int from = e[0];
+			int to = e[1];
+			int weight = e[2];
+			graph1.get(from).add(new int[]{to,weight});
 		}
 		return graph;
 	}
@@ -42,6 +52,7 @@ public class Test {
 		}
 		// 用数组结构代替队列结构
 		int[] queue = new int[n + 1];
+		// l和r表示队列中可用的空间
 		int l = 0;
 		int r = 0;
 		// 谁入度为0，加入到queue里去！
@@ -95,13 +106,12 @@ public class Test {
 	}
 
 	// 并查集，检查图中点到点的连通性，点到点是否能连通
+	// 没有完整实现
 	public static class UnionFind {
-
 		public UnionFind(int n) {
 			// n 0 ~ n-1
 			// 1 ~ n
 		}
-
 		public boolean isSameSet(int a, int b) {
 			return true;
 		}

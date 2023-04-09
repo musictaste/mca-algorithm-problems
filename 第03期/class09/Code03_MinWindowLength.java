@@ -15,10 +15,12 @@ public class Code03_MinWindowLength {
 		}
 		char[] str = s.toCharArray();
 		char[] target = t.toCharArray();
+		// 建立欠债表
 		int[] map = new int[256];
 		for (char cha : target) {
 			map[cha]++;
 		}
+		// all总的债务
 		int all = target.length;
 		int L = 0;
 		int R = 0;
@@ -27,9 +29,11 @@ public class Code03_MinWindowLength {
 		int ansr = -1;
 		while (R != str.length) {
 			map[str[R]]--;
+			// 有效还款，总债务--
 			if (map[str[R]] >= 0) {
 				all--;
 			}
+			// 总债务为0，左边界可以缩了，然后统计答案
 			if (all == 0) {
 				while (map[str[L]] < 0) {
 					map[str[L++]]++;

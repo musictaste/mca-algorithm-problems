@@ -8,6 +8,7 @@ public class Code01_Test2 {
 		public int[] father;
 		// size[i] : i号点如果是代表点的话，size[i]才有意义，代表集合的大小
 		public int[] size;
+		// 辅助数据，记录查找代表节点沿途的点
 		public int[] help;
 
 		public UnionFind(int n) {
@@ -21,12 +22,14 @@ public class Code01_Test2 {
 		}
 
 		// i号点，往上到不能再往上，是什么点？返回！
+		// 找到代表节点
 		private int find(int i) {
 			int size = 0;
 			while (i != father[i]) {
 				help[size++] = i;
 				i = father[i];
 			}
+			// 节点往上找代表点的过程，把沿途的链变成扁平的
 			while (size > 0) {
 				father[help[--size]] = i;
 			}
@@ -41,6 +44,7 @@ public class Code01_Test2 {
 		public void union(int x, int y) {
 			int fx = find(x);
 			int fy = find(y);
+			// 只需要小集合的代表点挂在大集合的代表点的下方即可
 			if (fx != fy) {
 				int sizeX = size[fx];
 				int sizeY = size[fy];

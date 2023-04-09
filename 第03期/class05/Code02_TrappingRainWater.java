@@ -27,6 +27,7 @@ public class Code02_TrappingRainWater {
 
 		// 求水量
 		int ans = 0;
+		// 左右两个边界的不会有水
 		for (int i = 1; i < n - 1; i++) {
 			ans += Math.max(Math.min(leftMax[i - 1], rightMax[i + 1]) - arr[i], 0);
 		}

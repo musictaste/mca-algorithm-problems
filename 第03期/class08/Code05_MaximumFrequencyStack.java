@@ -44,10 +44,13 @@ public class Code05_MaximumFrequencyStack {
 		public int pop() {
 			// 最大词频的那一层的链表(动态数组)
 			ArrayList<Integer> topTimeValues = cntValues.get(topTimes);
+			// 最大词频的层移除节点
 			int ans = topTimeValues.remove(topTimeValues.size() - 1);
+			// 如果最大词频的层变空，需要移除最大层，并更新出现的最大次数信息
 			if (topTimeValues.size() == 0) {
 				cntValues.remove(topTimes--);
 			}
+			// 更新词频表，如果元素出现次数为0，需要移除元素的记录
 			int times = valueTopTime.get(ans);
 			if (times == 1) {
 				valueTopTime.remove(ans);

@@ -28,8 +28,10 @@ public class Code03_PrefixAndSuffixSearch {
 			}
 		}
 
+		// 前缀的头
 		TrieNode preHead;
 
+		// 后缀的头
 		TrieNode sufHead;
 
 		// 初始化，有所有的字符串！
@@ -103,6 +105,8 @@ public class Code03_PrefixAndSuffixSearch {
 			return -1;
 		}
 
+		// 下标集合是有序的
+		// 有序数组中二分查找是否存在某个数
 		private boolean bs(ArrayList<Integer> sorted, int num) {
 			int l = 0;
 			int r = sorted.size() - 1;

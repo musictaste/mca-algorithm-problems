@@ -10,8 +10,8 @@ public class Code02_CouplesHoldingHands {
 
 	public int minSwapsCouples(int[] row) {
 		// 数字几个  2 * n   8   4   16  8
-		// 0 1   2 3  4 5    v
-		//  0     1    2     v/2
+		// 人编号：0 1   2 3  4 5    v
+		// 组号：  0     1    2     v/2
 		// n : 人数
 		// 情侣组  : n / 2
 		int n = row.length;
@@ -21,7 +21,7 @@ public class Code02_CouplesHoldingHands {
 			// 0  1  2 3  4
 			uf.union(row[i] / 2, row[i + 1] / 2);
 		}
-		// n / 2 - 
+		// 有多少组情侣 - 并查集的集合个数
 		return n / 2 - uf.sets();
 	}
 
@@ -66,6 +66,7 @@ public class Code02_CouplesHoldingHands {
 					father[fi] = fj;
 					size[fj] += size[fi];
 				}
+				// 集合个数--
 				sets--;
 			}
 		}

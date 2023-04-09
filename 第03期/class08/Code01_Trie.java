@@ -14,7 +14,7 @@ public class Code01_Trie {
 			public int pass;
 			// 有多少个字符串，以该节点结尾
 			public int end;
-
+			// 走向下级的路，如果node为空，则代表没路
 			public Node[] nexts;
 
 			public Node() {
@@ -30,6 +30,7 @@ public class Code01_Trie {
 			root = new Node();
 		}
 
+		// 给你一个字符串，添加str一次
 		public void insert(String word) {
 			if (word == null) {
 				return;
@@ -43,13 +44,16 @@ public class Code01_Trie {
 				if (node.nexts[path] == null) {
 					node.nexts[path] = new Node();
 				}
+				// 往下跳
 				node = node.nexts[path];
 				node.pass++;
 			}
 			node.end++;
 		}
 
+		// 给你一个字符串，删除str一次
 		public void erase(String word) {
+			// 先确定字符串确定存在，再沿途删除
 			if (countWordsEqualTo(word) != 0) {
 				char[] chs = word.toCharArray();
 				Node node = root;
@@ -57,6 +61,7 @@ public class Code01_Trie {
 				int path = 0;
 				for (int i = 0; i < chs.length; i++) {
 					path = chs[i] - 'a';
+					// 如果发现pass==0，将后面的节点彻底断连，让jvm将没用的节点删除，节省空间
 					if (--node.nexts[path].pass == 0) {
 						node.nexts[path] = null;
 						return;
@@ -67,6 +72,7 @@ public class Code01_Trie {
 			}
 		}
 
+		// 给你一个字符串str，查一下str出现了几次
 		public int countWordsEqualTo(String word) {
 			if (word == null) {
 				return 0;
@@ -76,14 +82,17 @@ public class Code01_Trie {
 			int index = 0;
 			for (int i = 0; i < chs.length; i++) {
 				index = chs[i] - 'a';
+				// 如果中间没路了，那么说明出现0次
 				if (node.nexts[index] == null) {
 					return 0;
 				}
 				node = node.nexts[index];
 			}
+			// 走到最后，返回end
 			return node.end;
 		}
 
+		// 给你一个字符串str，查一下有多少个字符串以str开头
 		public int countWordsStartingWith(String pre) {
 			if (pre == null) {
 				return 0;

@@ -21,17 +21,21 @@ public class Code03_MostStonesRemovedWithSameRowOrColumn {
 		for (int i = 0; i < n; i++) {
 			int x = stones[i][0];
 			int y = stones[i][1];
+			// 当前行没有记录，则增加记录
 			if (!rowFirst.containsKey(x)) {
 				rowFirst.put(x, i);
 			} else {
+				// 当前行已经存在石头，石头合并
 				uf.union(i, rowFirst.get(x));
 			}
+			// 列的处理
 			if (!colFirst.containsKey(y)) {
 				colFirst.put(y, i);
 			} else {
 				uf.union(i, colFirst.get(y));
 			}
 		}
+		// 要删除的石头=石头的个数-并查集集合的个数
 		return n - uf.sets();
 	}
 

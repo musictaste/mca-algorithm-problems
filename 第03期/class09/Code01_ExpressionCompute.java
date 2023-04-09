@@ -19,6 +19,7 @@ public class Code01_ExpressionCompute {
 	// 0) 负责的这一段的结果是多少
 	// 1) 负责的这一段计算到了哪个位置
 	public static int[] f(char[] str, int i) {
+		// 栈
 		LinkedList<String> queue = new LinkedList<String>();
 		int cur = 0;
 		int[] bra = null;
@@ -29,10 +30,13 @@ public class Code01_ExpressionCompute {
 				cur = cur * 10 + str[i++] - '0';
 			} else if (str[i] != '(') { // 遇到的是运算符号
 				addNum(queue, cur, str[i++]);
+				// 当前数字归0
 				cur = 0;
-			} else { // 遇到左括号了
+			} else { // 遇到左括号了，开启下一个递归
 				bra = f(str, i + 1);
+				// 递归计算的结果
 				cur = bra[0];
+				// 递归计算到的位置
 				i = bra[1] + 1;
 			}
 		}
@@ -43,16 +47,20 @@ public class Code01_ExpressionCompute {
 	}
 
 	public static void addNum(LinkedList<String> queue, int num, char op) {
+		// 弹出两个元素，第一个是操作符，第二个是数字
 		if (!queue.isEmpty() && (queue.peekLast().equals("*") || queue.peekLast().equals("/"))) {
 			String top = queue.pollLast();
 			int pre = Integer.valueOf(queue.pollLast());
 			num = top.equals("*") ? (pre * num) : (pre / num);
 		}
+		// 计算后的结果再次入栈
 		queue.addLast(String.valueOf(num));
 		queue.addLast(String.valueOf(op));
 	}
 
+	// 递归函数，栈中元素的计算，运算符只有加和减
 	public static int getAns(LinkedList<String> queue) {
+		// 栈中元素的计算，从栈底开始计算
 		int ans = Integer.valueOf(queue.pollFirst());
 		// size >1,最后一个操作符不处理，最后一个操作符默认为+
 		while (queue.size() > 1) {

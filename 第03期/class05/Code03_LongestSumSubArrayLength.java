@@ -14,6 +14,7 @@ public class Code03_LongestSumSubArrayLength {
 		// key : 某个前缀和 value : 前缀和出现的最早位置
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 		// 非常重要 ! 防止少算一些可能性
+		// 提前塞一条记录，前缀和为0，出现的位置是-1
 		map.put(0, -1);
 		int ans = 0;
 		int sum = 0;
@@ -21,9 +22,9 @@ public class Code03_LongestSumSubArrayLength {
 			// sum : 0.....i 整体的和
 			sum += arr[i];
 			if (map.containsKey(sum - k)) {
-				// 0.......730 1000 k = 100
-				// 0...17 900
-				// 18..730
+				// 0.......730 前缀和1000 k = 100
+				// 0...17 前缀和900
+				//         18..730 累加和是100
 				// 长度 = i - 最早位置
 				ans = Math.max(i - map.get(sum - k), ans);
 			}
@@ -48,6 +49,7 @@ public class Code03_LongestSumSubArrayLength {
 		int sum = 0;
 		for (int i = 0; i < arr.length; i++) {
 			sum += arr[i];
+			// 不提前塞记录，需要判断 前缀和是否等于k，符合的范围是0到i位置，数组长度i+1
 			if (sum == k) {
 				ans = Math.max(i + 1, ans);
 			} else {

@@ -20,14 +20,14 @@ public class Code04_LongestWellPerformingInterval {
 		int ans = 0;
 		int sum = 0;
 		for (int i = 0; i < hours.length; i++) {
-			// 转化，大于8的记为1，小于8的记为-1
+			// 转化，大于8的记为1，小于等于8的记为-1
 			sum += hours[i] > 8 ? 1 : -1;
 			if (sum > 0) {
 				// 0...i i+1
 				ans = i + 1;
 			} else {
-				// sum = -4
-				// -5最早出现在哪 j  j+1...i
+				// 前缀和sum = -4
+				// 前缀和-5最早出现在哪 j  j+1...i
 				if (map.containsKey(sum - 1)) {
 					ans = Math.max(ans, i - map.get(sum - 1));
 				}
