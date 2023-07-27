@@ -39,7 +39,7 @@ public class Code04_LongestWellPerformingInterval {
 		return ans;
 	}
 
-	// 数组替代哈希表
+	// 数组替代哈希表，没看懂
 	public static int longestWPI2(int[] hours) {
 		int n = hours.length;
 		int[] early = new int[(n << 1) + 1];

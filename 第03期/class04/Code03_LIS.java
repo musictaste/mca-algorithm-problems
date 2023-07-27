@@ -60,8 +60,14 @@ public class Code03_LIS {
 			max = Math.max(max, l + 1);
 		}
 		return max;
-		// 代码能不能变成right+1 ?
+		// 代码能不能变成right+1 ? 可以的
 //		return right+1;
+	}
+
+	public static void main(String[] args) {
+		int[] arr = {3,1,5,2,4,3,5,0};
+		int res = lengthOfLIS(arr);
+		System.out.println(res);
 	}
 
 }
